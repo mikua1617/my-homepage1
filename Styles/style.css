@@ -1,3 +1,4 @@
+
 h1, h2 {
   display: inline-block;
   float: right;
@@ -12,12 +13,13 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(13, 50px);
 }
 
 .grid-element{
-  font-family: 'Cabin', sans-serif;
-  font-size: 30px;
+  font-family: 'Quattrocento', serif;
+  font-size: 35px;
   text-align: center;
   border: 1px solid black;
   background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5));
@@ -28,20 +30,61 @@ body {
 
 }
 
+.main{
+  font-family: 'Amatic SC', cursive;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 6;
+  grid-row-end: 10;
+  font-size: 50px;
+  text-align: center;
+}
+
+.footer{
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 13;
+  grid-row-end: 14;
+  text-align: right;
+}
+
+
+.main-bg{
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 4;
+  grid-row-end: 14;
+  background-color: white;
+  font-size: 25px;
+  border: 1px solid black;
+  border-radius: 10px;
+
+}
+
+.gif {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 11;
+  grid-row-end: 13;
+  width: 210px;
+  height: 100px;
+  margin: 0 auto;
+}
+
 .grid-element.A:hover {
-  background-color: #ff7a7a;
+  background-color: #9da0a5;
 }
 
 .grid-element.B:hover {
-  background-color: #ff7a7a;
+  background-color: #9da0a5;
 }
 
 .grid-element.C:hover {
-  background-color: #ff7a7a;
+  background-color: #9da0a5;
 }
 
 .grid-element.D:hover {
-  background-color: #ff7a7a;
+  background-color: #9da0a5;
 }
 
 .active {
@@ -51,4 +94,168 @@ body {
 a {
   text-decoration: none;
   color: black;
+}
+
+.about-me1{
+  font-family: 'Amatic SC', cursive;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 5;
+  font-size: 20px;
+  text-align: justify;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.about-me2{
+  font-family: 'Amatic SC', cursive;
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 7;
+  grid-row-end: 9;
+  font-size: 20px;
+  text-align: justify;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+
+}
+
+.about-me3{
+  font-family: 'Amatic SC', cursive;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 11;
+  grid-row-end: 13;
+  font-size: 20px;
+  text-align: justify;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.img1{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 5;
+  grid-row-end: 19;
+  margin: 0 auto;
+}
+
+.img2{
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 3;
+  grid-row-end: 6;
+  margin: 0 auto;
+}
+
+.img3{
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 10;
+  grid-row-end: 14;
+  margin: 0 auto;
+}
+
+.contact-header{
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 4;
+  grid-row-end: 6;
+  font-size: 20px;
+}
+
+
+.contacth1{
+  grid-column-start: 1;
+  grid-row-start: 6;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+.contacth2{
+  grid-column-start: 2;
+  grid-row-start: 6;
+  font-size: 20px;
+  text-align: center;
+}
+
+.contacth3{
+  grid-column-start: 3;
+  grid-row-start: 6;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+.contacth4{
+  grid-column-start: 4;
+  grid-row-start: 6;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+.contact1{
+  grid-column-start: 1;
+  grid-row-start: 8;
+  font-size: 15px;
+  text-align: center;
+  padding-right: 20px;
+}
+
+.contact2{
+  grid-column-start: 2;
+  grid-row-start: 8;
+  font-size: 15px;
+  text-align: center;
+  padding-left: 20px;
+
+}
+
+.contact3{
+  grid-column-start: 3;
+  grid-row-start: 8;
+  font-size: 15px;
+  text-align: center;
+}
+
+.contact4{
+  grid-column-start: 4;
+  grid-row-start: 8;
+  font-size: 15px;
+  text-align: center;
+}
+
+.gallery1{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  margin: 0 auto;
+}
+
+.gallery2{
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 4;
+  margin: 0 auto;
+}
+
+.gallery3{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 13;
+  margin: 0 auto;
+}
+
+
+.gallery4{
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 13;
+  margin: 0 auto;
 }
