@@ -6,6 +6,8 @@
     <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
     <meta charset="utf-8">
     <title>My home page</title>
+
+
   </head>
   <body>
     <div class="grid">
@@ -23,6 +25,77 @@
       <div class="contact2"> 404 Gandhi bhawan, BITS Pilani, Vidyavihar, Pilani, Rajasthan 333031</div>
       <div class="contact3"> Ph. No.1 - 9829889689 <br> Ph. No.2 - 9409026616</div>
       <div class="contact4"> email - shashwatmm1996@gmail.com</div>
+      <p class = "or"> OR </p>
+
+      <div class="container">
+
+
+    <label for="fname">Name</label>
+    <br>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+    <br>
+
+    <label for="country">Country</label>
+    <br>
+    <input type="text" id="country" name="country" placeholder="Your country of residence..">
+    <br>
+
+    <label for="subject">Subject</label>
+    <br>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <br>
+    <p class="submission">
+
+    <button>Submit</button>
+  </p>
+
+</div>
+
+<script>
+
+  var butn = document.querySelector('button');
+
+  butn.onclick = function(){
+    //  alert("good job");
+
+    if(document.getElementById('fname').value==""){
+      alert("Please enter your name");
+      document.getElementById("fname").value = "";
+      return;
+
+    }
+
+
+    if(document.getElementById('country').value==""){
+      alert("Please enter your country");
+      document.getElementById("country").value = "";
+      return;
+    }
+
+
+    if(document.getElementById('subject').value==""){
+      alert("Please do give your comments");
+      document.getElementById("subject").value = "";
+      return;
+    }
+
+    else {
+      localStorage.setItem("NAME", document.getElementById('fname').value);
+      localStorage.setItem("COUNTRY", document.getElementById('country').value);
+      localStorage.setItem("COMMENTS", document.getElementById('subject').value);
+      document.getElementById("fname").value = "";
+      document.getElementById("country").value = "";
+      document.getElementById("subject").value = "";
+      alert("Thank you for your feedback");
+    }
+
+  }
+
+
+</script>
+
+
 
 
   </body>
