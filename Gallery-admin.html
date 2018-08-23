@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link href="Styles/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <title>My home page</title>
+  </head>
+  <body>
+  	<p>
+  	<div id="buttons">
+  	<button id="addbutt"> Add Image </button>
+  	<button id="delbutt"> Delete Image</button>
+  	<button id="editbutt"> Edit Image</button>
+  </div>
+
+  	<div id="wrapper">
+  		
+  	</div>
+  	<div id="custom-select">
+  	</div>
+  	
+  </p>
+
+  <script>
+  	var addbutn = document.getElementById('addbutt');
+  	var delbutn = document.getElementById('delbutt');
+
+  	var JSONobj = JSON.parse(localStorage.getItem('myJSONobj'));
+
+  	var mainvar1 = document.getElementById('wrapper');
+  	var mainvar2 = document.getElementById('custom-select');
+  	
+  	
+
+  	addbutn.onclick = function(){
+
+  		while (mainvar1.hasChildNodes()) {
+    		mainvar1.removeChild(mainvar1.lastChild);
+		}
+
+		while (mainvar2.hasChildNodes()){
+			mainvar2.removeChild(mainvar2.lastChild);
+		}
+
+
+  		var naming = '<span>Title: <input type="text" id="newname" placeholder="Enter Title of picture"></span>\r\n';
+  		document.getElementById('wrapper').innerHTML += naming;
+
+  		var urling = '<span>URL: <input type="text" id="newurl" placeholder="Enter url of picture"></span>\r\n';
+  		document.getElementById('wrapper').innerHTML += urling;
+
+  		var newbutton = '<button id="submitbutton">Submit</button>\r\n';
+
+  		document.getElementById('wrapper').innerHTML += newbutton;
+
+  		var submitbutton = document.getElementById('submitbutton');
+
+  		submitbutton.onclick = function(){
+  			
+
+			var temp1 = document.getElementById('newname').value;
+			var temp2 = document.getElementById('newurl').value;
+
+			var tempobj = {name: temp1, imageurl: temp2};
+
+			JSONobj.push(tempobj);
+
+			localStorage.setItem('myJSONobj', JSON.stringify(JSONobj));
+
+			while (mainvar1.hasChildNodes()) {
+    			mainvar1.removeChild(mainvar1.lastChild);
+			}
+
+  		}
+
+  	}
+
+  	var y = localStorage.getItem('myJSONobj');
+  	JSONobj2 = JSON.parse(y);
+  	console.log(JSONobj2);
+
+
+  	delbutn.onclick = function(){
+
+  		while (mainvar1.hasChildNodes()) {
+    		mainvar1.removeChild(mainvar1.lastChild);
+		}
+
+		while (mainvar2.hasChildNodes()){
+			mainvar2.removeChild(mainvar2.lastChild);
+		}
+
+		var select_element = '<select id="example-select"></select>\r\n';
+  		document.getElementById('custom-select').innerHTML += select_element;
+
+
+  		var tempdel = document.getElementById('example-select');
+
+		
+
+
+var select = document.getElementById("example-select");
+console.log(JSONobj2.length);
+for(var index =0; index < JSONobj2.length; index++) {
+    select.options[index] = new Option(JSONobj2[index].name, index);
+}
+
+  	
+
+  	var newbutton = '<button id="submitButtonForDel">Delete</button>\r\n';
+
+  		document.getElementById('custom-select').innerHTML += newbutton;
+
+
+
+
+
+
+	var delsubmit = document.getElementById('submitButtonForDel');
+
+	delsubmit.onclick = function(){
+		var select1 = document.getElementById("example-select");
+
+
+	for (var j = 0; j<JSONobj2.length; j++){
+		if(select1.options[select1.selectedIndex].text === JSONobj2[j].name){
+			
+			JSONobj2.splice(j, 1);
+			localStorage.setItem('myJSONobj', JSON.stringify(JSONobj2));
+
+		}
+	}
+
+}
+
+
+	}
+
+
+
+
+
+
+
+/*
+  	delbutn.onclick = function(){
+  		while (mainvar1.hasChildNodes()) {
+    		mainvar1.removeChild(mainvar1.lastChild);
+		}
+
+		while (mainvar2.hasChildNodes()){
+			mainvar2.removeChild(mainvar2.lastChild);
+		}
+
+		var select_element = '<select id="drop-down-elements"></select>\r\n';
+  		document.getElementById('custom-select').innerHTML += select_element;
+
+  		//var Elements = new Array(1000);
+
+  		//var Elementtext = new Array(1000);
+
+  		var tempdel = document.getElementById('drop-down-elements');
+
+		for(var i=0; i<JSONobj2.length; i++){
+			var Elements = document.createElement('option');
+			Elements.textContent = JSONobj2[i].name;
+			Elements.setAttribute("value", i.toString());
+			tempdel.appendChild(Elements);
+
+
+		}
+
+		var newbutton = '<button id="submitButtonForDel">Delete</button>\r\n';
+
+  		document.getElementById('custom-select').innerHTML += newbutton;
+
+
+
+
+
+
+	var delsubmit = document.getElementById('submitButtonForDel');
+
+	delsubmit.onclick = function(){
+		//var k = document.querySelector('.select-selected').value;
+		//alert(k);
+
+	}
+
+
+  	}
+*/
+  </script>
+
+
+  </body>
+  </html>
+

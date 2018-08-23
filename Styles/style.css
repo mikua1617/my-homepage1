@@ -17,6 +17,13 @@ body {
   grid-template-rows: repeat(13, 50px);
 }
 
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(1, 50px);
+}
+
+
 .grid-element{
   font-family: 'Quattrocento', serif;
   font-size:35px;
@@ -242,41 +249,37 @@ a {
   text-align: center;
 }
 
-.gallery1{
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 4;
-  margin: 0 auto;
+.gallery{
+  display: flex;
+  width: 900px;
+  margin: auto;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-
-.gallery2{
-  grid-column-start: 3;
-  grid-column-end: 5;
-  grid-row-start: 4;
-  margin: 0 auto;
+figure{
+  width: 200px;
+  margin: 8px 0;
+  border: 1px solid #777;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: #fff;
 }
-
-.gallery3{
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 13;
-  margin: 0 auto;
+figure img{
+  width: 100%;
 }
-
-
-.gallery4{
-  grid-column-start: 3;
-  grid-column-end: 5;
-  grid-row-start: 13;
-  margin: 0 auto;
+figure figcaption{
+  text-align: center;
+  padding: 8px 4px;
 }
 
 
 .container {
   grid-column-start: 2;
   grid-column-end: 4;
-  grid-row-start: 12;
-  margin-left: 50px;
+  grid-row-start: 13;
+  
+  
+
 }
 
 .or {
@@ -289,16 +292,73 @@ a {
 
 #fname{
   width: 500px;
+  margin: 0, auto;
 }
 
 #country {
   width: 500px;
+  margin: 0, auto;
 }
 
 #subject {
   width: 500px;
+  margin: 0, auto;
 }
 
 .submission{
   padding-bottom: 50px;
+margin: 0, auto;
+}
+
+
+
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+.select-selected {
+  background-color: DodgerBlue;
+}
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
 }
