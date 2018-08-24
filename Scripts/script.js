@@ -30,7 +30,7 @@ var imageJSON = [{"name": "Pic of Birthday", "imageurl": "./Images/JPEG_20180315
 
 var x = JSON.stringify(imageJSON);
 
-if(localStorage.getItem('myJSONobj') === undefined){
+if(localStorage.getItem('myJSONobj') === null){
 
     localStorage.setItem('myJSONobj', x);
 }

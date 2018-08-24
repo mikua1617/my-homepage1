@@ -60,7 +60,7 @@
   		var urling = '<span>URL: <input type="text" id="newurl" placeholder="Enter url of picture"></span>\r\n';
   		document.getElementById('wrapper').innerHTML += urling;
 
-      var dateing = '<span>Date of uploading: <input type="text" id="newdate" placeholder="Enter date in format DD/MM/YYYY"></span>\r\n';
+      var dateing = '<span>Date of uploading: <input type="text" id="newdate" placeholder="date format DD/MM/YYYY"></span>\r\n';
   		document.getElementById('wrapper').innerHTML += dateing;
 
 
@@ -81,20 +81,27 @@
         var tempurl = document.getElementById('newurl').value;
 
         var regex = new RegExp('(https|http)\:\/\/.*(gif|jpg|jpeg|png)');
-        /*
+
         if(!regex.test(tempurl) || tempurl == ""){
 
           alert("Please enter a valid URL");
           return;
         }
-*/
+
 
         var tempdate1 = document.getElementById('newdate').value;
-        var dateobj1 = new Date('tempdate1');
+
         var today = new Date();
 
+        var datecomponents = tempdate1.split("/");
+
+        var datestring = datecomponents[1]+'-'+datecomponents[0]+'-'+datecomponents[2];
+
+        var dateobj2 = new Date(datestring);
+
+
         if(isValidDate(tempdate1)){
-          if(today<dateobj1){
+          if(today<dateobj2){
             alert("Uploaded date cannot be in the future!");
             return;
           }
@@ -188,6 +195,123 @@ for(var index =0; index < JSONobj2.length; index++) {
 
 
 }
+
+
+editbutn.onclick = function(){
+
+  var indexstore = 0;
+
+
+    		while (mainvar1.hasChildNodes()) {
+      		mainvar1.removeChild(mainvar1.lastChild);
+  		}
+
+  		while (mainvar2.hasChildNodes()){
+  			mainvar2.removeChild(mainvar2.lastChild);
+  		}
+
+  		var select_element = '<select id="example-select"></select>\r\n';
+    		document.getElementById('custom-select').innerHTML += select_element;
+
+
+    		var tempdel = document.getElementById('example-select');
+
+
+
+
+  var select = document.getElementById("example-select");
+  for(var index =0; index < JSONobj2.length; index++) {
+      select.options[index] = new Option(JSONobj2[index].name, index);
+  }
+
+
+
+    	var newbutton = '<button id="submitButtonForEdit">Edit</button>\r\n';
+
+    		document.getElementById('custom-select').innerHTML += newbutton;
+
+        	var editsubmit = document.getElementById('submitButtonForEdit');
+
+          editsubmit.onclick = function(){
+            var select1 = document.getElementById("example-select");
+
+
+                            for (var j = 0; j<JSONobj2.length; j++){
+                              if(select1.options[select1.selectedIndex].text === JSONobj2[j].name){
+
+                                indexstore = j;
+
+                              }
+                            }
+
+
+            while (mainvar1.hasChildNodes()) {
+          		mainvar1.removeChild(mainvar1.lastChild);
+      		}
+
+      		while (mainvar2.hasChildNodes()){
+      			mainvar2.removeChild(mainvar2.lastChild);
+      		}
+
+
+              		var naming = '<span>Title: <input type="text" id="newname" placeholder="Enter Title of picture"></span>\r\n';
+              		document.getElementById('wrapper').innerHTML += naming;
+
+              		var urling = '<span>URL: <input type="text" id="newurl" placeholder="Enter url of picture"></span>\r\n';
+              		document.getElementById('wrapper').innerHTML += urling;
+
+                  var dateing = '<span>Date of uploading: <input type="text" id="newdate" placeholder="date format DD/MM/YYYY"></span>\r\n';
+              		document.getElementById('wrapper').innerHTML += dateing;
+
+
+
+
+
+
+              		var newbutton = '<button id="submitbutton">Submit</button>\r\n';
+
+              		document.getElementById('wrapper').innerHTML += newbutton;
+
+              		var submitbutton = document.getElementById('submitbutton');
+
+              		submitbutton.onclick = function(){
+                    if(document.getElementById('newname').value!==""){
+                      JSONobj2[indexstore].name = document.getElementById('newname').value;
+                    }
+
+                    if(document.getElementById('newurl').value!==""){
+                      JSONobj2[indexstore].imageurl = document.getElementById('newurl').value;
+                    }
+
+                    if(document.getElementById('newdate').value!==""){
+                      JSONobj2[indexstore].imageurl = document.getElementById('newdate').value;
+                    }
+
+                    localStorage.setItem('myJSONobj', JSON.stringify(JSONobj2));
+
+                    window.location.reload();
+                  }
+
+
+
+
+
+
+
+
+          }
+
+
+}
+
+
+
+
+
+
+
+
+
 
 function isValidDate(s) {
 
